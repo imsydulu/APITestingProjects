@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="restassueredex.RestAssredFDemo">
+      <class name="validation.ValidationEx">
         <methods>
-          <include name="testGetReq"/>
+          <include name="validateCookies"/>
         </methods>
-      </class> <!-- restassueredex.RestAssredFDemo -->
+      </class> <!-- validation.ValidationEx -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

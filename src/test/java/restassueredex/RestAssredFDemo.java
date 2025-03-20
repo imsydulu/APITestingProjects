@@ -1,10 +1,7 @@
 package restassueredex;
 
 import java.util.HashMap;
-import java.util.Map;
-
 import org.testng.annotations.Test;
-
 import com.google.gson.JsonObject;
 
 import io.restassured.RestAssured;
@@ -17,8 +14,13 @@ public class RestAssredFDemo {
 	@Test(enabled = false)
 	public void testGetReq() {
 
-		ValidatableResponse validateResp = RestAssured.given().when().get("https://reqres.in/api/users/2").then().log()
-				.all().statusCode(200);
+		ValidatableResponse validateResp = 
+				RestAssured
+				.given()
+				.when()
+				.get("https://reqres.in/api/users/2")
+				.then().log().all().statusCode(200);
+		System.out.println(validateResp);
 
 	}
 	@Test
@@ -33,7 +35,7 @@ public class RestAssredFDemo {
 
 		ValidatableResponse postresponse = RestAssured.given().contentType(ContentType.JSON).body(pojoPalyload()).when()
 				.post("https://reqres.in/api/users").then().log().all();
-		// System.out.println(postresponse);
+		 System.out.println(postresponse);
 
 	}
 
