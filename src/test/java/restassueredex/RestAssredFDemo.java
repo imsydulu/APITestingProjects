@@ -33,7 +33,11 @@ public class RestAssredFDemo {
 	@Test
 	public void postReqTest() {
 
-		ValidatableResponse postresponse = RestAssured.given().contentType(ContentType.JSON).body(pojoPalyload()).when()
+		ValidatableResponse postresponse = RestAssured
+				.given()
+				.contentType(ContentType.JSON)
+				.body(pojoPalyload())
+				.when()
 				.post("https://reqres.in/api/users").then().log().all();
 		 System.out.println(postresponse);
 

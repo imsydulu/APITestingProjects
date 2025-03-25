@@ -1,11 +1,46 @@
 package validation;
 
+import java.util.Map;
+import java.util.Set;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
+import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
 public class ValidationEx {
+	// https://reqres.in/api/users/2
+	//https://reqres.in/api/users?page=2
+	// https://reqres.in/
+	@Test
+	public void getCookies() {
+		Response response = RestAssured.given()
+		.when()
+		.get("https://www.google.com/");
+		
+		//String cookie=response.getCookie("AEC");
+		//System.out.println(cookie);
+		Map<String, String> allcookies = response.getCookies();
+		Set<String> keyset = allcookies.keySet();
+		for (String key : keyset) {
+			System.out.println("Cookie_Name ==> "+key+"  Cookie_Value ==> "+allcookies.get(key));
+		}
+	}
+	
+	@Test
+	public void getHeaders() {
+		Response resp=RestAssured.given()
+		.when()
+		.get("https://www.google.com/");
+		
+		Headers allheaders = resp.getHeaders();
+		for (Header header : allheaders) {
+			System.out.println("Header Name==> "+header.getName()+" Header Value==> "+header.getValue());
+		}
+	}
+	
 	
 	@Test
 	public void getReqValidation() {
