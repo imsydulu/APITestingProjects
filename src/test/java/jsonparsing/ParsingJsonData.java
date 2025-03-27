@@ -7,8 +7,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
+import com.github.javafaker.Faker;
+
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 
 public class ParsingJsonData {
@@ -32,6 +35,10 @@ public class ParsingJsonData {
 			
 			System.out.println(email);
 		}
+		
+		Faker faker = new Faker();
+		System.out.println(faker.demographic().sex());
+	
 
 	}
 	
@@ -54,7 +61,9 @@ public class ParsingJsonData {
 			}
 			
 		}
+		response.then().assertThat().statusCode(200);
 		assertTrue(status);
+		
 
 	}
 
