@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SerializDeserialize {
-	String data = null;
+	String JsonData = null;
 	@Test(priority = 1)
 	public void serilaizationTest() {
 
@@ -17,12 +17,12 @@ public class SerializDeserialize {
 		
 		ObjectMapper mapper = new ObjectMapper(); 
 		try {
-			data=mapper.writerWithDefaultPrettyPrinter().writeValueAsString(pojo); //serialization
+			JsonData=mapper.writerWithDefaultPrettyPrinter().writeValueAsString(pojo); //serialization
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println(data);
+		System.out.println(JsonData);
 	}
 	
 	@Test(priority = 2, dependsOnMethods  = "serilaizationTest")
@@ -31,7 +31,7 @@ public class SerializDeserialize {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		try {
-		PojoAbstract	objpojo=mapper.readValue(data, PojoAbstract.class);
+		PojoAbstract	objpojo=mapper.readValue(JsonData, PojoAbstract.class);
 		System.out.println(objpojo.getJob()+"  "+objpojo.getName());
 		
 		} catch (JsonMappingException e) {
